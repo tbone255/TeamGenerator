@@ -1,17 +1,47 @@
+import java.util.*;
+
+
 public class TeamGenerator 
 {
 	private static String[] names = {"Taha", "Mujib", "Ali", "Reza"};
+	private static int[] nums = {50, 10, 5, 1};
+	
+	private static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 	public static void main(String[] args) 
 	{
-		
-		String s1 = names[ (int)(Math.random() * 4)];
-		String s2 = names[ (int)(Math.random() * 4)];
-		while(s1.equals(s2))
+		for(int i = 1; i < 1000; i++)
 		{
-			s2 = names[ (int)(Math.random() * 4)];
+			int r1 = (int)(Math.random() * 4);
+			int r2 = (int)(Math.random() * 4);
+			String s1 = names[ r1];
+			String s2 = names[ r2];
+			while(s1.equals(s2))
+			{
+				r2 = (int)(Math.random() * 4);
+				s2 = names[r2];
+			}
+			int num = nums[r1] + nums[r2];
+			if(!map.containsKey(num))
+			{
+				map.put(nums[r1] + nums[r2], 1);
+				
+			}
+			else
+			{
+				map.put(nums[r1] + nums[r2], map.get(num) + 1);
+			}
+			
+			System.out.println(i + ": " + s1 + " and " + s2);
+			
 		}
-		System.out.println(s1 + " and " + s2);
+		System.out.println("Taha: 50 \t Mujib: 10 \t Ali: 5 \t Reza: 1");
+		Set<Integer> keys = map.keySet();  //get all keys
+		for(Integer key: keys)
+		{
+		    System.out.println(key + ": " + map.get(key));
+		}
+		
 		
 	}
 
