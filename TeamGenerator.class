@@ -1,0 +1,18 @@
+public class TeamGenerator 
+{
+	private static String[] names = {"Taha", "Mujib", "Ali", "Reza"};
+
+	public static void main(String[] args) 
+	{
+		
+		String s1 = names[ (int)(Math.random() * 4)];
+		String s2 = names[ (int)(Math.random() * 4)];
+		while(s1.equals(s2))
+		{
+			s2 = names[ (int)(Math.random() * 4)];
+		}
+		System.out.println(s1 + " and " + s2);
+		
+	}
+
+}
